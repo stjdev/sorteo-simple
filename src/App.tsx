@@ -137,7 +137,7 @@ const App = () => {
           <Tabla
             columns={columnas}
             data={seleccionados}
-            title={"Sorteo STJER: "+titulo}
+            title={"Seleccionados por Sorteo: "+titulo}
             options={{
               exportAllData: true,
               exportButton: true,
