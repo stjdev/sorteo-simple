@@ -9,6 +9,7 @@ const App = () => {
   const [cantidadASortear, setCantidadASortear] = useState<number>(1)
   const [sorteoRealizado, setSorteoRealizado] = useState(false)
   const [seleccionados, setSeleccionados] = useState<any[]>([])
+  const [titulo, setTitulo] = useState<string>("")
   const buttonRef = createRef<CSVReader>()
 
   const handleOpenDialog = (e: any) => {
@@ -53,6 +54,15 @@ const App = () => {
     <div style={{ maxWidth: "100%" }}>
       {!sorteoRealizado && (
         <>
+          <TextField
+                id="titulo-sorteo"
+                label="Escriba el título del sorteo"                
+                value={titulo}
+                onChange={(e: any) => setTitulo(e.target.value)}
+                InputLabelProps={{
+                  shrink: true,
+                }}
+          />
           <CSVReader
             ref={buttonRef}
             onFileLoad={handleOnFileLoad}
@@ -127,7 +137,7 @@ const App = () => {
           <Tabla
             columns={columnas}
             data={seleccionados}
-            title="Seleccionados por Sorteo"
+            title={"Sorteo STJER: "+titulo}
             options={{
               exportAllData: true,
               exportButton: true,
